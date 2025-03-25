@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oroscopo dei Segni Zodiacali</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    h1 {
+      color: #ff7f50;
+    }
+    .segno-button {
+      font-size: 1.2em;
+      margin: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: 2px solid #ff7f50;
+      background-color: white;
+      color: #ff7f50;
+      border-radius: 5px;
+    }
+    .segno-button:hover {
+      background-color: #ff7f50;
+      color: white;
+    }
+    #oroscopo {
+      font-size: 1.5em;
+      margin-top: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+    #buttons-container {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Scegli il tuo Segno Zodiacale</h1>
+
+  <div id="buttons-container">
+    <!-- Pulsanti per ogni segno zodiacale -->
+    <button class="segno-button" onclick="vaiAlSegno('Ariete')">Ariete</button>
+    <button class="segno-button" onclick="vaiAlSegno('Toro')">Toro</button>
+    <button class="segno-button" onclick="vaiAlSegno('Gemelli')">Gemelli</button>
+    <button class="segno-button" onclick="vaiAlSegno('Cancro')">Cancro</button><br>
+    <button class="segno-button" onclick="vaiAlSegno('Leone')">Leone</button>
+    <button class="segno-button" onclick="vaiAlSegno('Vergine')">Vergine</button>
+    <button class="segno-button" onclick="vaiAlSegno('Bilancia')">Bilancia</button>
+    <button class="segno-button" onclick="vaiAlSegno('Scorpione')">Scorpione</button><br>
+    <button class="segno-button" onclick="vaiAlSegno('Sagittario')">Sagittario</button>
+    <button class="segno-button" onclick="vaiAlSegno('Capricorno')">Capricorno</button>
+    <button class="segno-button" onclick="vaiAlSegno('Acquario')">Acquario</button>
+    <button class="segno-button" onclick="vaiAlSegno('Pesci')">Pesci</button>
+  </div>
+
+  <div id="oroscopo">
+    <!-- L'oroscopo sarà visualizzato qui -->
+  </div>
+
+  <script>
+    // Array di segni zodiacali
+    const segniZodiacali = [
+      'Ariete', 'Toro', 'Gemelli', 'Cancro', 'Leone', 'Vergine', 'Bilancia', 'Scorpione', 'Sagittario', 'Capricorno', 'Acquario', 'Pesci'
+    ];
+
+    // Funzione per navigare al segno successivo
+    function vaiAlSegno(segno) {
+      // Nascondiamo i pulsanti
+      document.getElementById('buttons-container').style.display = 'none';
+      
+      // Mostriamo l'oroscopo
+      document.getElementById('oroscopo').style.display = 'block';
+
+      // Genera l'oroscopo deterministico per il segno
+      generaOroscopo(segno);
+    }
+
+    // Funzione per generare numeri casuali deterministici basati su un seed
+    function randomSeed(seed) {
+            return Math.sin(seed) * 10000 - Math.floor(Math.sin(seed) * 10000);
+    };
+
+    // Funzione per generare l'oroscopo per un segno zodiacale
+    function generaOroscopo(segno) {
+      const oroscopi1 = {
+        positivo: [
+  `${segno}, oggi il cielo è favorevole! È il momento perfetto per cogliere nuove occasioni. La fortuna è dalla tua parte.`,
+  `${segno}, preparati a un incontro che potrebbe cambiare la tua giornata. Sorprese in arrivo!`,
+  `${segno}, l'energia che ti circonda è incredibile. Approfitta di questa giornata per fare progressi nei tuoi progetti.`,
+  `${segno}, il tuo entusiasmo è contagioso oggi! Approfitta di questa energia positiva per avanzare nelle tue aspirazioni.`,
+  `${segno}, oggi potrebbe esserci un'opportunità inaspettata che porta con sé una grande gioia. Non perdere questa chance.`,
+  `${segno}, le stelle ti sorridono! Tieni gli occhi aperti per segnali importanti e possibili novità.`,
+  `${segno}, una ventata di freschezza sta per arrivare nella tua vita. Sii pronto a nuovi inizi e opportunità.`,
+  `${segno}, oggi è una giornata perfetta per fare un passo in avanti. Le circostanze ti sono favorevoli.`,
+  `${segno}, un'idea brillante potrebbe venire in mente oggi. Non esitare a seguirla, potrebbe portarti lontano.`,
+  `${segno}, la serenità che stai cercando è a portata di mano. Approfitta di questo momento di tranquillità per riflettere e fare scelte positive.`,
+  `${segno}, oggi è una giornata ideale per mettere in pratica i tuoi sogni. Il coraggio ti guiderà verso il successo.`,
+  `${segno}, una grande opportunità di crescita ti attende. Sfrutta ogni momento per espandere i tuoi orizzonti.`,
+  `${segno}, la fortuna ti accompagna in ogni passo che fai. Le tue azioni oggi porteranno risultati positivi.`,
+  `${segno}, oggi è il giorno giusto per fare quel cambiamento che desideri. Le condizioni sono perfette per nuove sfide.`,
+  `${segno}, l'universo ti sta preparando qualcosa di speciale. Prepara il cuore ad accogliere le sorprese che stanno arrivando.`
+],
+        neutro: [
+  `${segno}, oggi sarà un giorno impegnativo, ma non dimenticare di concentrarti su ciò che è importante.`,
+  `${segno}, la routine potrebbe sembrare noiosa, ma approfitta di questo tempo per riflettere.`,
+  `${segno}, mantieni la calma oggi. Nulla di straordinario, ma nessun problema nemmeno.`,
+  `${segno}, oggi potrebbe essere una giornata tranquilla. Non ci sono grandi cambiamenti in vista, ma è un buon momento per ricaricarti.`,
+  `${segno}, cerca di non farti travolgere dalla monotonia. Ogni momento ha il suo valore, anche nei giorni più ordinari.`,
+  `${segno}, oggi potrebbe non essere il giorno dei grandi successi, ma le piccole cose ti porteranno comunque soddisfazione.`,
+  `${segno}, una giornata nella media ti aspetta. Fai attenzione ai dettagli, potrebbero fare la differenza nel lungo periodo.`,
+  `${segno}, il ritmo potrebbe essere lento oggi. Usa questo tempo per organizzarti e pianificare il futuro.`,
+  `${segno}, niente di troppo eccitante accadrà oggi, ma prendi questa calma come un'opportunità per riflettere e riorganizzare le tue idee.`,
+  `${segno}, oggi la routine regna sovrana. Non aspettarti sorprese, ma sfrutta questa stabilità per fare progressi silenziosi.`,
+  `${segno}, un giorno tranquillo ti permette di concentrarti su ciò che hai lasciato in sospeso. È il momento ideale per completare i piccoli compiti.`,
+  `${segno}, oggi la giornata potrebbe essere priva di emozioni forti. È un buon momento per concentrarti su te stesso e su ciò che ti serve.`,
+  `${segno}, il flusso delle cose sarà moderato. Non preoccuparti di forzare nulla, lascia che le cose accadano naturalmente.`,
+  `${segno}, oggi sarà una giornata nella media, ma potresti trovare un piccolo piacere nelle cose semplici che farai.`,
+  `${segno}, non c'è bisogno di fretta oggi. Usa questo tempo per trovare equilibrio e riflettere su ciò che desideri davvero.`
+],
+        negativo: [
+  `${segno}, potresti sentirti un po' giù oggi. Non preoccuparti, passa presto.`,
+  `${segno}, le cose potrebbero non andare come sperato. Tieni la testa alta, la situazione migliorerà.`,
+  `${segno}, oggi sarà una giornata impegnativa. Cerca di non lasciarti sopraffare.`,
+  `${segno}, potresti sentirti sopraffatto dalle circostanze. Respira e ricordati che ogni difficoltà è solo temporanea.`,
+  `${segno}, oggi potresti incontrare qualche ostacolo lungo il cammino. Non lasciare che ti abbatta, ogni difficoltà è una lezione.`,
+  `${segno}, oggi potrebbe essere una di quelle giornate in cui nulla sembra andare per il verso giusto. Fai il possibile e avrai la soddisfazione di averci provato.`,
+  `${segno}, potresti sentirti poco motivato oggi. Non forzarti troppo, riposa se necessario e riprenderai energia presto.`,
+  `${segno}, oggi le cose potrebbero non procedere come previsto. Tieni la calma e affronta ogni difficoltà con serenità.`,
+  `${segno}, oggi ti sentirai forse più stanco del solito. Prenditi una pausa, ti aiuterà a ricaricare le energie.`,
+  `${segno}, la giornata potrebbe sembrare lunga e faticosa. Tieni duro, la fine è vicina.`,
+  `${segno}, le cose potrebbero non andare come avevi sperato. Non temere, spesso i momenti difficili sono quelli che ci insegnano di più.`,
+  `${segno}, non aspettarti troppo oggi, potrebbero esserci alcuni ritardi o imprevisti. Con pazienza, tutto si risolverà.`,
+  `${segno}, una leggera delusione potrebbe essere in arrivo oggi. Non lasciarti abbattere, la situazione migliorerà a breve.`,
+  `${segno}, oggi potresti sentirti un po' incerto. Vai avanti passo dopo passo, ogni difficoltà sarà superata.`,
+  `${segno}, oggi potrebbe esserci qualche frustrazione. Ricorda che anche le giornate più difficili hanno la loro fine.`
+]
+      };
+
+      const pianteti = [
+  "Oggi il Sole illumina la tua strada. Le tue energie sono alte, approfittane per fare ciò che ti sta a cuore.",
+  `${segno} ha il Sole dalla tua parte, è il momento perfetto per fare nuove iniziative e sentirti ispirato.`,
+  "Il Sole porta chiarezza e rivelazioni. Oggi potresti avere una visione più nitida delle tue priorità.",
+  "La Luna risveglia la tua sensibilità. Ascolta il tuo istinto, ti guiderà verso scelte sagge.",
+  `${segno}, con la Luna che influenza le tue emozioni, oggi è una giornata perfetta per connetterti con il tuo mondo interiore.`,
+  `La Luna ti invita a riflettere sulle tue emozioni. Prenditi un momento per trovare la serenità.`,
+  `${segno}, Mercurio favorisce la comunicazione. Sfrutta questo momento per chiarire qualsiasi malinteso o condividere idee.`,
+  "Oggi Mercurio è in un buon aspetto. Le tue parole saranno più potenti, quindi usa la tua voce con fiducia.",
+  "Mercurio porta una mente brillante. Sfrutta questa energia per risolvere problemi complessi.",
+  "Venere illumina le tue relazioni oggi. Sii aperto a nuovi incontri e a momenti di connessione autentica.",
+  "Con Venere favorevole, le tue relazioni saranno particolarmente armoniose. Approfitta di questo periodo per rafforzare i legami.",
+  "Marte ti spinge ad agire con determinazione. Oggi è il giorno giusto per prendere in mano una situazione che richiede coraggio.",
+  `${segno}, Marte ti dona energia e motivazione. Non perdere questa spinta per superare qualsiasi ostacolo.`,
+  "Saturno ti invita alla riflessione. Oggi è il giorno giusto per fare un bilancio e prendere decisioni responsabili.",
+  `${segno}, con Saturno che ti osserva, la disciplina sarà la tua alleata oggi. Organizzati e vedrai i frutti dei tuoi sforzi.`
+];
+
+      const chiusura = [
+  "Hai molto bisogno che gli altri ti apprezzino e ti stimino eppure hai una tendenza a essere critico nei confronti di te stesso.",
+  "Pur avendo alcune debolezze nel carattere, sei generalmente in grado di porvi rimedio.",
+  "Preferisci una certa dose di cambiamento e varietà e ti senti insoddisfatto se obbligato a restrizioni e limitazioni.",
+  "A volte dubiti seriamente di aver preso la giusta decisione o di aver fatto la cosa giusta.",
+  "Disciplinato e controllato all'esterno, tendi a essere preoccupato e insicuro dentro di te.",
+  "Hai molte capacità inutilizzate che non hai volto a tuo vantaggio.",
+  "A volte sei estroverso, affabile, socievole, mentre altre volte sei introverso, diffidente e riservato.",
+  "La tua mente è un terreno fertile per grandi idee, ma a volte hai difficoltà a realizzarle per paura di non essere all'altezza.",
+  "Senti spesso la pressione di dover dimostrare qualcosa agli altri, anche se in realtà sei già molto capace.",
+  "Talvolta hai difficoltà a gestire la solitudine, ma sei anche consapevole che il tempo per te stesso è essenziale per il tuo benessere.",
+  "Sei consapevole delle tue insicurezze, ma lavori costantemente per superarle, anche se a volte senti che il progresso è lento.",
+  "Può capitare che tu sia troppo critico nei confronti degli altri, ma spesso lo fai per proteggere te stesso da potenziali ferite emotive.",
+  "Sei una persona che, pur avendo una grande capacità di adattarsi, a volte sente il bisogno di stabilità e sicurezza per poter prosperare.",
+  "Nonostante le tue paure e le tue insicurezze, possiedi una forza interiore che ti permette di affrontare le difficoltà con determinazione.",
+  "Tendi a procrastinare quando sei sopraffatto dalle emozioni, ma una volta che prendi in mano la situazione, sei in grado di fare progressi notevoli."
+];
+
+      // Creiamo un seed deterministico basato sulla data e sull'indice del segno
+      const date = new Date();
+      const indexSegno = segniZodiacali.indexOf(segno);  // Troviamo l'indice del segno nella lista
+      const seed = (date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate() + indexSegno) % 10000;  // Genera il seed combinando data e indice
+
+      // Selezioniamo casualmente una frase dalla categoria basata sul seed
+      const categorie = ['positivo', 'neutro', 'negativo'];
+      const categoria = categorie[Math.floor(randomSeed(seed) * categorie.length)];
+
+      // Generiamo un oroscopo casuale usando il seed
+      const oroscopo = oroscopi1[categoria][Math.floor(randomSeed(seed) * oroscopi1[categoria].length)];
+
+
+      // Generiamo una frase casuale dai pianeti con il seed
+      const pianetiFrase = pianteti[Math.floor(randomSeed(seed + 1) * pianteti.length)];
+
+      // Selezioniamo una chiusura casuale con il seed
+      const chiusuraFrase = chiusura[Math.floor(randomSeed(seed + 2) * chiusura.length)];
+
+      // Mostriamo l'oroscopo
+      document.getElementById('oroscopo').innerHTML = `<p>${oroscopo}</p><br><p>${pianetiFrase}</p><br><p><i>${chiusuraFrase}</i></p>`;
+    }
+
+  </script>
+
+</body>
+</html>
