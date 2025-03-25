@@ -86,10 +86,13 @@
     <button class="segno-button" onclick="vaiAlSegno('Pesci')">Pesci</button>
   </div>
 
-  <div id="oroscopo">
-    <!-- L'oroscopo sarà visualizzato qui -->
-     <button id="back-button" onclick="tornaIndietro()">Indietro</button>
+  
+  <div id="oroscopo"></div>
+  <div class="slider-container" id="slider-container" style="display: none;">
+    <p>Amore ❤️ <span id="amore-value"></span>%</p>
+    <input type="range" min="0" max="100" class="slider" id="amore-slider" disabled>
   </div>
+  <button id="back-button" onclick="tornaIndietro()" style="display: none;">Indietro</button>
 
   <script>
     // Array di segni zodiacali
