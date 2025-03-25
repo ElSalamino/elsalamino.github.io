@@ -93,8 +93,30 @@
     <input type="range" min="0" max="100" class="slider" id="amore-slider" disabled>
   </div>
   <button id="back-button" onclick="tornaIndietro()" style="display: none;">Indietro</button>
+  <p id="counter" style="position: fixed; bottom: 10px; right: 10px; font-size: 14px; color: gray;"></p>
+
 
   <script>
+    function fakeCounter() {
+    const startDate = new Date("2024-03-25"); // Data di inizio conteggio
+    const endDate = new Date("2026-12-31T23:59:59"); // Data obiettivo
+
+    const totalTime = Math.floor((endDate - startDate) / 1000); // Secondi totali tra startDate e endDate
+    const maxViews = 5000000; // Numero massimo di visite ipotetico entro il 2026
+
+    function updateCounter() {
+      const now = new Date();
+      const timeElapsed = Math.floor((now - startDate) / 1000); // Secondi passati
+
+      const views = Math.floor((timeElapsed / totalTime) * maxViews); // Stima progressiva
+      document.getElementById("counter").innerText = `Visite: ${views.toLocaleString()}`;
+    }
+
+    updateCounter(); // Calcola subito il valore iniziale
+    setInterval(updateCounter, 500); // Aggiorna ogni secondo
+  }
+
+  fakeCounter();
     // Array di segni zodiacali
     const segniZodiacali = [
       'Ariete', 'Toro', 'Gemelli', 'Cancro', 'Leone', 'Vergine', 'Bilancia', 'Scorpione', 'Sagittario', 'Capricorno', 'Acquario', 'Pesci'
