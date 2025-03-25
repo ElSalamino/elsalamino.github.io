@@ -220,7 +220,7 @@
                 return num.toString().split('').map(digit => String.fromCodePoint(0x30 + parseInt(digit), 0xFE0F, 0x20E3)).join('');
             });
             
-            return emojiNumbers.join(' ');
+            return emojiNumbers.join('  - ');
 }
 
       // Generiamo una frase casuale dai pianeti con il seed
