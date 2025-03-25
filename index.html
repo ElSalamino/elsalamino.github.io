@@ -101,6 +101,11 @@
         positivo: [
   `${segno}, oggi il cielo è favorevole! È il momento perfetto per cogliere nuove occasioni. La fortuna è dalla tua parte.`,
   `${segno}, preparati a un incontro che potrebbe cambiare la tua giornata. Sorprese in arrivo!`,
+  `${segno}, la tua sicurezza ti sorprenderà, riuscirai a ribaltare una situazione complicata`,
+  `${segno}, le tue idee oggi si riveleranno impattanti per una persona a te cara.`,
+  `${segno}, la fortuna girerà dalla tua parte, una situazione insidiosa si dimostrerà in realtà molto propizia`,
+  `${segno}, abbi il coraggio di fare un passo avanti e nessuno ti bloccherà`,
+
   `${segno}, l'energia che ti circonda è incredibile. Approfitta di questa giornata per fare progressi nei tuoi progetti.`,
   `${segno}, il tuo entusiasmo è contagioso oggi! Approfitta di questa energia positiva per avanzare nelle tue aspirazioni.`,
   `${segno}, oggi potrebbe esserci un'opportunità inaspettata che porta con sé una grande gioia. Non perdere questa chance.`,
@@ -130,6 +135,7 @@
   `${segno}, oggi la giornata potrebbe essere priva di emozioni forti. È un buon momento per concentrarti su te stesso e su ciò che ti serve.`,
   `${segno}, il flusso delle cose sarà moderato. Non preoccuparti di forzare nulla, lascia che le cose accadano naturalmente.`,
   `${segno}, oggi sarà una giornata nella media, ma potresti trovare un piccolo piacere nelle cose semplici che farai.`,
+  `${segno}, per ogni problema complesso, c'è sempre una soluzione semplice, oggi tienilo bene a mente.`,
   `${segno}, non c'è bisogno di fretta oggi. Usa questo tempo per trovare equilibrio e riflettere su ciò che desideri davvero.`
 ],
         negativo: [
@@ -147,13 +153,17 @@
   `${segno}, non aspettarti troppo oggi, potrebbero esserci alcuni ritardi o imprevisti. Con pazienza, tutto si risolverà.`,
   `${segno}, una leggera delusione potrebbe essere in arrivo oggi. Non lasciarti abbattere, la situazione migliorerà a breve.`,
   `${segno}, oggi potresti sentirti un po' incerto. Vai avanti passo dopo passo, ogni difficoltà sarà superata.`,
+  `${segno}, capirti è difficile, ricorda che non tutti sono in grado di farlo.`,
+  `${segno}, una falsa sicurezza ti porterà dove non devi, non lasciarti guidare dall'impulsività.`,
+  `${segno}, aimè gli errori oggi ci saranno, ma il non ammetterli sarà il vero errore.`,
+
   `${segno}, oggi potrebbe esserci qualche frustrazione. Ricorda che anche le giornate più difficili hanno la loro fine.`
 ]
       };
 
       const pianteti = [
   "Oggi il Sole illumina la tua strada. Le tue energie sono alte, approfittane per fare ciò che ti sta a cuore.",
-  `${segno} ha il Sole dalla tua parte, è il momento perfetto per fare nuove iniziative e sentirti ispirato.`,
+  `${segno} ha il Sole dalla sua parte, è il momento perfetto per fare nuove iniziative e sentirti ispirato.`,
   "Il Sole porta chiarezza e rivelazioni. Oggi potresti avere una visione più nitida delle tue priorità.",
   "La Luna risveglia la tua sensibilità. Ascolta il tuo istinto, ti guiderà verso scelte sagge.",
   `${segno}, con la Luna che influenza le tue emozioni, oggi è una giornata perfetta per connetterti con il tuo mondo interiore.`,
@@ -162,6 +172,9 @@
   "Oggi Mercurio è in un buon aspetto. Le tue parole saranno più potenti, quindi usa la tua voce con fiducia.",
   "Mercurio porta una mente brillante. Sfrutta questa energia per risolvere problemi complessi.",
   "Venere illumina le tue relazioni oggi. Sii aperto a nuovi incontri e a momenti di connessione autentica.",
+ "La congiunzione di Marte porterà ardore nella tua giornata, attenzione ai tuoi incontri",
+ "L'opposizione a Plutone potrebbe impattare i tuoi rapporti lavorativi, portandoti a dimenticare una scadenza importante.",
+ "La quadratura in Mercurio ti porterà in nuovi campi, ringrazia e cogli la palla al balzo.",
   "Con Venere favorevole, le tue relazioni saranno particolarmente armoniose. Approfitta di questo periodo per rafforzare i legami.",
   "Marte ti spinge ad agire con determinazione. Oggi è il giorno giusto per prendere in mano una situazione che richiede coraggio.",
   `${segno}, Marte ti dona energia e motivazione. Non perdere questa spinta per superare qualsiasi ostacolo.`,
@@ -198,16 +211,26 @@
 
       // Generiamo un oroscopo casuale usando il seed
       const oroscopo = oroscopi1[categoria][Math.floor(randomSeed(seed) * oroscopi1[categoria].length)];
-
+      function randomNumbersToEmoji(seed) {
+            // Genera tre numeri casuali tra 1 e 100 usando randomSeed
+            let numbers = Array.from({ length: 3 }, () => Math.floor(randomSeed(5) * 100) + 1);
+            
+            // Converte ogni numero in una sequenza di emoji
+            let emojiNumbers = numbers.map(num => {
+                return num.toString().split('').map(digit => String.fromCodePoint(0x30 + parseInt(digit), 0xFE0F, 0x20E3)).join('');
+            });
+            
+            return emojiNumbers.join(' ');
+}
 
       // Generiamo una frase casuale dai pianeti con il seed
       const pianetiFrase = pianteti[Math.floor(randomSeed(seed + 1) * pianteti.length)];
 
       // Selezioniamo una chiusura casuale con il seed
       const chiusuraFrase = chiusura[Math.floor(randomSeed(seed + 2) * chiusura.length)];
-
+      const numeri_fortunati = randomNumbersToEmoji(randomSeed(seed + 3))
       // Mostriamo l'oroscopo
-      document.getElementById('oroscopo').innerHTML = `<p>${oroscopo}</p><br><p>${pianetiFrase}</p><br><p><i>${chiusuraFrase}</i></p>`;
+      document.getElementById('oroscopo').innerHTML = `<p>${oroscopo}</p><br><p>${pianetiFrase}</p><br><p><i>${chiusuraFrase}</i></p><br><br>I tuoi numeri fortunati di oggi:<br>${numeri_fortunati}`;
     }
 
   </script>
