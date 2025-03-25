@@ -94,6 +94,7 @@
   </div>
   <button id="back-button" onclick="tornaIndietro()" style="display: none;">Indietro</button>
   <p id="counter" style="position: fixed; bottom: 10px; right: 10px; font-size: 14px; color: gray;"></p>
+  <p id="accuratezza" style="position: fixed; bottom: 30px; right: 10px; font-size: 14px; color: gray;"></p>
 
 
   <script>
@@ -109,8 +110,10 @@
       const timeElapsed = Math.floor((now - startDate) / 1000); // Secondi passati
 
       const views = Math.floor((timeElapsed / totalTime) * maxViews); // Stima progressiva
-      const acc = Math.random() * (99 - 92) + 92
-      document.getElementById("counter").innerText = `Visite ad oggi: ${views.toLocaleString()}<br>Accuratezza delle predizioni:${acc}%`;
+      const acc = Math.round((Math.random() * (99 - 92) + 92) * 10) /10
+      document.getElementById("counter").innerText = `Visite ad oggi: ${views.toLocaleString()}`;
+      document.getElementById("accuratezza").innerText = `Accuratezza delle predizioni:${acc}%`;
+      
     }
 
     updateCounter(); // Calcola subito il valore iniziale
