@@ -10,10 +10,10 @@
       text-align: center;
       padding: 50px;
       background-color: #170c9c;
-      color: #333;
+      color: #fff;
     }
     h1 {
-      color: #746be8;
+      color: #ffdd57;
 
     }
     .segno-button {
@@ -44,7 +44,25 @@
       display: none;
     }
     #buttons-container {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #back-button {
+      margin-top: 20px;
+      font-size: 1.2em;
+      padding: 10px 20px;
+      border: 2px solid #ffdd57;
+      background-color: white;
+      color: #1e1e8f;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none;
+      transition: 0.3s;
+    }
+    #back-button:hover {
+      background-color: #ffdd57;
+      color: #1e1e8f;
     }
   </style>
 </head>
@@ -70,6 +88,7 @@
 
   <div id="oroscopo">
     <!-- L'oroscopo sarà visualizzato qui -->
+     <button id="back-button" onclick="tornaIndietro()">Indietro</button>
   </div>
 
   <script>
@@ -89,7 +108,12 @@
       // Genera l'oroscopo deterministico per il segno
       generaOroscopo(segno);
     }
-
+    function tornaIndietro() {
+      document.getElementById('buttons-container').style.display = 'flex';
+      document.getElementById('oroscopo').style.display = 'none';
+      document.getElementById('back-button').style.display = 'none';
+    }
+  
     // Funzione per generare numeri casuali deterministici basati su un seed
     function randomSeed(seed) {
             return Math.sin(seed) * 10000 - Math.floor(Math.sin(seed) * 10000);
