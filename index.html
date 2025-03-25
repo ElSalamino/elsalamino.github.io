@@ -109,11 +109,12 @@
       const timeElapsed = Math.floor((now - startDate) / 1000); // Secondi passati
 
       const views = Math.floor((timeElapsed / totalTime) * maxViews); // Stima progressiva
-      document.getElementById("counter").innerText = `Visite: ${views.toLocaleString()}`;
+      const acc = Math.random() * (99 - 92) + 92
+      document.getElementById("counter").innerText = `Visite ad oggi: ${views.toLocaleString()}<br>Accuratezza delle predizioni:${acc}%`;
     }
 
     updateCounter(); // Calcola subito il valore iniziale
-    setInterval(updateCounter, 500); // Aggiorna ogni secondo
+    setInterval(updateCounter, 1000); // Aggiorna ogni secondo
   }
 
   fakeCounter();
