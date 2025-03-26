@@ -160,30 +160,32 @@
     ];
 
     // Funzione per navigare al segno successivo
-    function vaiAlSegno(segno) {
-  // Nascondiamo i pulsanti
-  document.getElementById('buttons-container').style.display = 'none';
+      function vaiAlSegno(segno) {
+    // Nascondiamo i pulsanti
+    document.getElementById('buttons-container').style.display = 'none';
   
-  // Mostriamo l'oroscopo
-  document.getElementById('oroscopo').style.display = 'block';
+    // Mostriamo l'oroscopo
+    document.getElementById('oroscopo').style.display = 'block';
   
-  // Mostriamo il bottone indietro
-  document.getElementById('back-button').style.display = 'block';
+    // Mostriamo il bottone indietro
+    document.getElementById('back-button').style.display = 'block';
   
-  // Mostriamo gli slider
-  document.getElementById('slider-container').style.display = 'block';
+    // Mostriamo gli slider
+    document.getElementById('slider-container').style.display = 'block'; // Rendiamo gli slider visibili
+  
+    //Logica per generare l'oroscopo
+    generaOroscopo(segno);
+  }
 
-  // Genera l'oroscopo deterministico per il segno
-  generaOroscopo(segno);
-}
-
-    function tornaIndietro() {
-      document.getElementById('buttons-container').style.display = 'flex';
-      //togli tutto rrapido
-      document.getElementById('oroscopo').style.display = 'none';
-      document.getElementById('back-button').style.display = 'none';
-      document.getElementById('slider-container').style.display = 'none';
-    }
+  function tornaIndietro() {
+    document.getElementById('buttons-container').style.display = 'flex';
+    
+    // Rimuoviamo tutto velocemente
+    document.getElementById('oroscopo').style.display = 'none';
+    document.getElementById('back-button').style.display = 'none';
+    document.getElementById('slider-container').style.display = 'none'; 
+  }
+  
   
     // Funzione per generare numeri casuali deterministici basati su un seed
     function randomSeed(seed) {
@@ -326,6 +328,13 @@
       const numeri_fortunati = randomNumbersToEmoji(randomSeed(seed + 3))
       // Mostriamo l'oroscopo
       document.getElementById('oroscopo').innerHTML = `<p>${oroscopo}</p><br><p>${pianetiFrase}</p><br><p><i>${chiusuraFrase}</i></p><br><br>I tuoi numeri fortunati di oggi:<br>${numeri_fortunati}`;
+      document.getElementById('amore-slider').style.width = '75%';
+      document.getElementById('soldi-slider').style.width = '60%';
+      document.getElementById('amicizie-slider').style.width = '80%';
+      document.getElementById('umore-slider').style.width = '50%';
+
+      // Mostra gli slider (già visibili per impostazione di `display: block;`)
+      document.getElementById('slider-container').style.display = 'block';
     }
 
   </script>
