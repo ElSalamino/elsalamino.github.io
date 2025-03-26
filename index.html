@@ -274,31 +274,30 @@ span {
 
     //generatore dei numeri delle percentuali
     function getNumberBasedOnSeed(seed) {
-  // Generiamo un valore tra -1 e 1 usando Math.sin
+  // Creiamo una curva di probabilità usando Math.sin
   const sinValue = Math.sin(seed);
+  
+  // Mappiamo il valore sin in un range da 0 a 100
+  let scaledValue = (sinValue + 1) * 50; // Sin varia tra -1 e 1, lo spostiamo in un range tra 0 e 100
+  
+  // A questo punto scaledValue è tra 0 e 100, ma vogliamo renderlo più probabile intorno all'80.
+  
+  // Creiamo una funzione che enfatizza i valori intorno a 80
+  const curve = (x) => {
+    // Una parabola che ha il massimo in x = 80 e scende man mano che ci si allontana
+    return Math.exp(-Math.pow((x - 80) / 20, 2)) * 100; // Il 20 controlla la "larghezza" della curva
+  };
 
-  // Mappiamo il valore sin in un range tra 0 e 100
-  let scaledValue = (sinValue + 1) * 50; // da -1..1 a 0..100
-
-  // Creiamo una distribuzione gaussiana centrata attorno a 80
-  function gaussian(x, mean, stddev) {
-    const factor = 1 / (stddev * Math.sqrt(2 * Math.PI));
-    const exponent = -Math.pow(x - mean, 2) / (2 * Math.pow(stddev, 2));
-    return factor * Math.exp(exponent);
-  }
-
-  // Applichiamo una distribuzione gaussiana centrata su 80, con una deviazione standard di 20
-  let probability = gaussian(scaledValue, 80, 20);
-
-  // Mappiamo la probabilità a un valore tra 0 e 100
-  let result = probability * 100;
-
-  // Arrotondiamo il risultato al passo di 5
-  const roundedValue = Math.round(result / 5) * 5;
-
-  // Assicuriamoci che il valore sia tra 0 e 100
-  return Math.max(0, Math.min(100, roundedValue));
+  // Applichiamo la curva al nostro valore scalato
+  let curvedValue = curve(scaledValue);
+  
+  // Mappiamo il risultato in un numero tra 0 e 100 con step di 5
+  const roundedValue = Math.abs(Math.round(curvedValue / 5) * 5);
+  
+  // Restituiamo il risultato finale
+  return Math.max(0, Math.min(100, roundedValue)); // Assicuriamoci che il valore sia tra 0 e 100
 }
+
     // Funzione per generare l'oroscopo per un segno zodiacale
     function generaOroscopo(segno) {
       const oroscopi1 = {
