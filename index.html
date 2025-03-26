@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oroscopo dei Segni Zodiacali</title>
+  <title>Oroscopo 💫​ id = "titolo"</title>
   <style>
   * {
     margin: 0;
@@ -155,7 +155,7 @@ span {
 </head>
 <body>
 
-  <h1>Scegli il tuo Segno Zodiacale</h1>
+  <h1>Scegli il tuo Segno Zodiacale id="scegli"</h1>
 
   <div id="buttons-container">
     <!-- Pulsanti per ogni segno zodiacale -->
@@ -275,7 +275,7 @@ span {
     //generatore dei numeri delle percentuali
     function getNumberBasedOnSeed(seed) {
     // Genera un numero casuale da 0 a 45 a step di 5 basato sul seed
-    const randomFactor = seededRandom(seed);  // Ottieni il valore casuale basato sul seed
+    const randomFactor = randomSeed(seed);  // Ottieni il valore casuale basato sul seed
     const possibleValues = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45];
     const index = Math.floor(randomFactor * possibleValues.length); // Mappa il valore casuale in un indice
     return 55 + possibleValues[index];
