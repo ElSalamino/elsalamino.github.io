@@ -275,7 +275,7 @@ span {
     //generatore dei numeri delle percentuali
     function getNumberBasedOnSeed(seed) {
   // Creiamo una curva di probabilità usando Math.sin
-  const sinValue = Math.sin(seed);
+  const sinValue = seed;
   
   // Mappiamo il valore sin in un range da 0 a 100
   let scaledValue = (sinValue + 1) * 50; // Sin varia tra -1 e 1, lo spostiamo in un range tra 0 e 100
