@@ -4,59 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="titolo">Oroscopo 💫</title>
-   //<div class="sky" id="sky">
-        <!-- Le stelle saranno generate dinamicamente con JavaScript -->
-    //</div>
+
   <style>
-  /* Impostazioni di base per la pagina */
-  body, html {
+  * {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-  }
+    box-sizing: border-box;
+}
 
-  body {
+body {
     font-family: Arial, sans-serif;
     text-align: center;
     padding: 50px;
     background-color: #170c9c; /* Colore di sfondo */
     color: #333;
-  }
+}
 
-  /* Sfondo del cielo stellato */
-  .sky {
-    position: relative;
-    height: 100vh;
-    background-color: #001f3d; /* Colore di sfondo simile alla notte */
-  }
-
-  /* Stile base per ogni stella */
-  .star {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: twinkle 2s infinite alternate;
-  }
-
-  /* Animazione di scintillio delle stelle */
-  @keyframes twinkle {
-    0% {
-      opacity: 0.5;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  /* Titolo */
-  h1 {
+h1 {
     color: #746be8; /* Colore del titolo */
-  }
+}
 
-  /* Bottoni */
-  .segno-button {
+.segno-button {
     font-size: 1.2em;
     margin: 10px;
     padding: 10px 20px;
@@ -65,15 +33,14 @@
     background-color: #f2f2f2;
     color: #ff7f50;
     border-radius: 5px;
-  }
+}
 
-  .segno-button:hover {
+.segno-button:hover {
     background-color: #3427db;
     color: white;
-  }
+}
 
-  /* Oroscopo */
-  #oroscopo {
+#oroscopo {
     font-size: 1.5em;
     margin-top: 30px;
     max-width: 600px;
@@ -85,17 +52,15 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: none;
-  }
+}
 
-  /* Contenitore per i bottoni */
-  #buttons-container {
+#buttons-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  }
+}
 
-  /* Pulsante indietro */
-  #back-button {
+#back-button {
     margin-top: 20px;
     font-size: 1.2em;
     padding: 10px 20px;
@@ -106,15 +71,15 @@
     cursor: pointer;
     display: none;
     transition: 0.3s;
-  }
+}
 
-  #back-button:hover {
+#back-button:hover {
     background-color: #ffdd57;
     color: #1e1e8f;
-  }
+}
 
-  /* Stile per le barre di caricamento */
-  .slider-container {
+/* CSS per lo stile delle barre di caricamento */
+.slider-container {
     display: block;
     margin-top: 20px;
     padding: 10px;
@@ -127,67 +92,67 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .progress-bar {
+.progress-bar {
     width: 100%;  /* La larghezza della barra è al 100% del contenitore */
     height: 25px;
     background-color: #ddd;  /* Colore di sfondo della barra */
     border-radius: 5px;
     margin: 10px 0;
     position: relative;
-  }
+}
 
-  .progress-fill {
+.progress-fill {
     height: 100%;
     border-radius: 5px;
     background-color: #3467db;  /* Colore della barra di progresso */
     transition: width 0.5s ease-in-out;  /* Transizione dolce quando cambia il valore */
-  }
+}
 
-  span {
+span {
     font-size: 1.2em;
     color: #333;
     padding-left: 10px;
-  }
+}
 
-  /* Media query per dispositivi più piccoli (ad esempio smartphone) */
-  @media (max-width: 480px) {
+/* Media query per dispositivi più piccoli (ad esempio smartphone) */
+@media (max-width: 480px) {
     body {
-      padding: 20px; /* Riduci il padding per schermi piccoli */
+        padding: 20px; /* Riduci il padding per schermi piccoli */
     }
 
     .slider-container {
-      width: 95%; /* Maggiore larghezza per dispositivi più piccoli */
+        width: 95%; /* Maggiore larghezza per dispositivi più piccoli */
     }
 
     p {
-      font-size: 1em; /* Riduci la dimensione del testo su schermi piccoli */
+        font-size: 1em; /* Riduci la dimensione del testo su schermi piccoli */
     }
 
     span {
-      font-size: 1em; /* Riduci la dimensione della percentuale */
+        font-size: 1em; /* Riduci la dimensione della percentuale */
     }
-  }
+}
 
-  /* Colorazione dinamica delle barre in base alla percentuale */
-  #amore-fill {
+/* Colorazione dinamica delle barre in base alla percentuale */
+#amore-fill {
     background-color: #ff4d4d; /* Rosso per l'amore */
-  }
+}
 
-  #soldi-fill {
+#soldi-fill {
     background-color: #4caf50; /* Verde per i soldi */
-  }
+}
 
-  #amicizie-fill {
+#amicizie-fill {
     background-color: #2196f3; /* Blu per le amicizie */
-  }
+}
 
-  #umore-fill {
+#umore-fill {
     background-color: #ff9800; /* Arancione per l'umore */
-  }
+}
 
-</style>
+  </style>
 </head>
 <body>
 
@@ -489,42 +454,6 @@
     amiciziePercentText.textContent = `${amiciziePercent/10} / 10`;
     umorePercentText.textContent = `${umorePercent/10} / 10`;
 }
-ocument.addEventListener("DOMContentLoaded", function() {
-    const sky = document.getElementById('sky');
-    const numStars = 210; // Numero di stelle da generare
-
-    // Funzione per generare una posizione casuale tra 0 e max
-    function randomPosition(max) {
-        return Math.random() * max;
-    }
-
-    // Funzione per generare un colore casuale tra bianco e giallo
-    function randomColor() {
-        const colors = ['#ffffff', '#ffff99']; // Bianco e giallo
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    // Generazione delle stelle
-    for (let i = 0; i < numStars; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        
-        // Posizione casuale (x, y)
-        star.style.left = `${randomPosition(window.innerWidth)}px`;
-        star.style.top = `${randomPosition(window.innerHeight)}px`;
-
-        // Dimensione casuale della stella
-        star.style.width = `${Math.random() * 2 + 1}px`; // Tra 1px e 3px
-        star.style.height = star.style.width;
-
-        // Colore casuale tra bianco e giallo
-        star.style.backgroundColor = randomColor();
-
-        // Aggiungi la stella al cielo
-        sky.appendChild(star);
-    }
-});
-
   </script>
 
 </body>
