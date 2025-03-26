@@ -103,7 +103,7 @@
     const endDate = new Date("2026-12-31T23:59:59"); // Data obiettivo
 
     const totalTime = Math.floor((endDate - startDate) / 1000); // Secondi totali tra startDate e endDate
-    const maxViews = 5000000; // Numero massimo di visite ipotetico entro il 2026
+    const maxViews = 6900000; // Numero massimo di visite ipotetico entro il 2026
 
     function updateCounter() {
       const now = new Date();
@@ -136,7 +136,7 @@
       //mostriamo il back
       document.getElementById('back-button').style.display = 'block';
       // Mostra slider
-      document.getElementById('slider-container').style.display = 'none';
+      document.getElementById('slider-container').style.display = 'block';
       // Genera l'oroscopo deterministico per il segno
       generaOroscopo(segno);
     }
