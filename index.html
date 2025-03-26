@@ -295,7 +295,7 @@ span {
   const roundedValue = Math.abs(Math.round(curvedValue / 5) * 5);
   
   // Restituiamo il risultato finale
-  return Math.max(0, Math.min(100, roundedValue)); // Assicuriamoci che il valore sia tra 0 e 100
+  return Math.max(55, Math.min(100, roundedValue)); // Assicuriamoci che il valore sia tra 0 e 100
 }
 
     // Funzione per generare l'oroscopo per un segno zodiacale
@@ -439,7 +439,7 @@ span {
     const amorePercent = getNumberBasedOnSeed(seed + 6);  // Percentuale per l'Amore
     const soldiPercent = getNumberBasedOnSeed(seed + 9);  // Percentuale per i Soldi
     const amiciziePercent = getNumberBasedOnSeed(seed + 7);  // Percentuale per le Amicizie
-    const umorePercent = getNumberBasedOnSeed(seed + 1);  // Percentuale per l'Umore
+    const umorePercent = getNumberBasedOnSeed(seed + 17);  // Percentuale per l'Umore
 
     // Selezioniamo gli elementi delle barre di progresso e dei relativi testi
     const amoreFill = document.getElementById("amore-fill");
