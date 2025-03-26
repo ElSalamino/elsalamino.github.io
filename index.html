@@ -171,11 +171,7 @@
   document.getElementById('back-button').style.display = 'block';
   
   // Mostriamo gli slider
-  const sliderContainer = document.getElementById('slider-container');
-  sliderContainer.style.display = 'block';
-  
-  // Verifica con un log
-  console.log('Slider container visibile:', sliderContainer.style.display);
+  document.getElementById('slider-container').style.display = 'block';
 
   // Genera l'oroscopo deterministico per il segno
   generaOroscopo(segno);
