@@ -64,6 +64,19 @@
       background-color: #ffdd57;
       color: #1e1e8f;
     }
+    #slider-container {
+  display: block !important; /* Aggiungi !important se il display è stato sovrascritto da un altro CSS */
+  margin-top: 10px;
+    }
+    
+    .w3-light-grey {
+      background-color: #f0f0f0; /* Aggiungi colore di sfondo per evidenziare */
+    }
+    
+    .w3-pink, .w3-light-green, .w3-amber, .w3-cyan {
+      height: 24px;
+      transition: width 0.5s ease;
+    }
   </style>
 </head>
 <body>
@@ -154,7 +167,7 @@
       document.getElementById('oroscopo').style.display = 'block';
       //mostriamo il back
       document.getElementById('back-button').style.display = 'block';
-      // Mostra slider
+      // Mostriamo gli slider
       document.getElementById('slider-container').style.display = 'block';
       // Genera l'oroscopo deterministico per il segno
       generaOroscopo(segno);
