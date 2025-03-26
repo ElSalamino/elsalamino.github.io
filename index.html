@@ -274,30 +274,12 @@ span {
 
     //generatore dei numeri delle percentuali
     function getNumberBasedOnSeed(seed) {
-  // Creiamo una curva di probabilità usando Math.sin
-  const sinValue = Math.sin(seed);
-  
-  // Mappiamo il valore sin in un range da 0 a 100
-  let scaledValue = (sinValue + 1) * 50; // Sin varia tra -1 e 1, lo spostiamo in un range tra 0 e 100
-  
-  // A questo punto scaledValue è tra 0 e 100, ma vogliamo renderlo più probabile intorno all'80.
-  
-  // Creiamo una funzione che enfatizza i valori intorno a 80
-  const curve = (x) => {
-    // Una parabola che ha il massimo in x = 80 e scende man mano che ci si allontana
-    return Math.exp(-Math.pow((x - 80) / 20, 2)) * 100; // Il 20 controlla la "larghezza" della curva
-  };
-
-  // Applichiamo la curva al nostro valore scalato
-  let curvedValue = curve(scaledValue);
-  
-  // Mappiamo il risultato in un numero tra 0 e 100 con step di 5
-  const roundedValue = Math.abs(Math.round(curvedValue / 5) * 5);
-  
-  // Restituiamo il risultato finale
-  return Math.max(55, Math.min(100, roundedValue)); // Assicuriamoci che il valore sia tra 0 e 100
+    // Genera un numero casuale da 0 a 45 a step di 5 basato sul seed
+    const randomFactor = seededRandom(seed);  // Ottieni il valore casuale basato sul seed
+    const possibleValues = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45];
+    const index = Math.floor(randomFactor * possibleValues.length); // Mappa il valore casuale in un indice
+    return 55 + possibleValues[index];
 }
-
     // Funzione per generare l'oroscopo per un segno zodiacale
     function generaOroscopo(segno) {
       const oroscopi1 = {
