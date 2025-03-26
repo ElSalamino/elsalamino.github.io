@@ -64,20 +64,36 @@
       background-color: #ffdd57;
       color: #1e1e8f;
     }
-    #slider-container {
-  display: block !important; /* Aggiungi !important per forzare la visibilità */
-  margin-top: 20px; /* Aggiungi un po' di spazio sopra */
-  padding: 10px;
-    }
-    .w3-light-grey {
-  background-color: #f0f0f0; /* Aggiungi colore di sfondo per evidenziare */
-  transition: background-color 0.5s ease;
+   /* CSS per lo stile delle barre di caricamento */
+.slider-container {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
 }
 
-.w3-pink, .w3-light-green, .w3-amber, .w3-cyan {
-  height: 24px;
-  transition: width 0.5s ease;
+.progress-bar {
+    width: 80%;  /* La larghezza della barra */
+    height: 25px;
+    background-color: #ddd;  /* Colore di sfondo della barra */
+    border-radius: 5px;
+    margin: 10px 0;
+    position: relative;
 }
+
+.progress-fill {
+    height: 100%;
+    border-radius: 5px;
+    background-color: #3467db;  /* Colore della barra di progresso */
+    transition: width 0.5s ease-in-out;  /* Transizione dolce quando cambia il valore */
+}
+
+span {
+    font-size: 1.2em;
+    color: #333;
+    padding-left: 10px;
+}
+
   </style>
 </head>
 <body>
@@ -100,28 +116,35 @@
     <button class="segno-button" onclick="vaiAlSegno('Pesci')">Pesci</button>
   </div>
 
-  <div id="oroscopo">
-  <div class="slider-container" id="slider-container" style="display: none;">
+<div id="oroscopo">
+  <!-- HTML per le barre di caricamento -->
+<div class="slider-container" id="slider-container">
     <p>Amore ❤️</p>
-    <div class="w3-light-grey">
-      <div class="w3-pink" style="height:24px;width:75%" id="amore-slider"></div>
+    <div class="progress-bar" id="amore-bar">
+        <div class="progress-fill" id="amore-fill"></div>
     </div>
-    
+    <span id="amore-percent">75%</span> <!-- Mostra la percentuale -->
+
     <p>Soldi 💸​</p>
-    <div class="w3-light-grey">
-      <div class="w3-light-green" style="height:24px;width:75%" id="soldi-slider"></div>
+    <div class="progress-bar" id="soldi-bar">
+        <div class="progress-fill" id="soldi-fill"></div>
     </div>
-    
+    <span id="soldi-percent">60%</span> <!-- Mostra la percentuale -->
+
     <p>Amicizie 🫂​</p>
-    <div class="w3-light-grey">
-      <div class="w3-amber" style="height:24px;width:75%" id="amicizie-slider"></div>
+    <div class="progress-bar" id="amicizie-bar">
+        <div class="progress-fill" id="amicizie-fill"></div>
     </div>
-    
+    <span id="amicizie-percent">80%</span> <!-- Mostra la percentuale -->
+
     <p>Umore 😃​</p>
-    <div class="w3-light-grey">
-      <div class="w3-cyan" style="height:24px;width:75%" id="umore-slider"></div>
+    <div class="progress-bar" id="umore-bar">
+        <div class="progress-fill" id="umore-fill"></div>
     </div>
-  </div>
+    <span id="umore-percent">70%</span> <!-- Mostra la percentuale -->
+</div>
+
+
 </div>
 
   <button id="back-button" onclick="tornaIndietro()" style="display: none;">Indietro</button>
@@ -328,23 +351,36 @@
       const numeri_fortunati = randomNumbersToEmoji(randomSeed(seed + 3))
       // Mostriamo l'oroscopo
       document.getElementById('oroscopo').innerHTML = `<p>${oroscopo}</p><br><p>${pianetiFrase}</p><br><p><i>${chiusuraFrase}</i></p><br><br>I tuoi numeri fortunati di oggi:<br>${numeri_fortunati}`;
-      const amoreSlider = document.getElementById('amore-slider');
-      const soldiSlider = document.getElementById('soldi-slider');
-      const amicizieSlider = document.getElementById('amicizie-slider');
-      const umoreSlider = document.getElementById('umore-slider');
+    
+    // Impostiamo i valori per ciascuna barra di progresso (percentuali)
+    const amorePercent = 75;  // Percentuale per l'Amore
+    const soldiPercent = 60;  // Percentuale per i Soldi
+    const amiciziePercent = 80;  // Percentuale per le Amicizie
+    const umorePercent = 70;  // Percentuale per l'Umore
 
-  // Verifica che gli slider esistano
-      if (amoreSlider && soldiSlider && amicizieSlider && umoreSlider) {
-          // Cambia la larghezza degli slider in base a qualche logica
-          amoreSlider.style.width = '75%';  // Esempio: 75% di larghezza per "Amore"
-          soldiSlider.style.width = '60%';  // Esempio: 60% di larghezza per "Soldi"
-          amicizieSlider.style.width = '80%';  // Esempio: 80% di larghezza per "Amicizie"
-          umoreSlider.style.width = '50%';  // Esempio: 50% di larghezza per "Umore"
-      } else {
-          console.error("Errore: uno o più slider non sono stati trovati.");
-      }
-    }
+    // Selezioniamo gli elementi delle barre di progresso e dei relativi testi
+    const amoreFill = document.getElementById("amore-fill");
+    const soldiFill = document.getElementById("soldi-fill");
+    const amicizieFill = document.getElementById("amicizie-fill");
+    const umoreFill = document.getElementById("umore-fill");
 
+    const amorePercentText = document.getElementById("amore-percent");
+    const soldiPercentText = document.getElementById("soldi-percent");
+    const amiciziePercentText = document.getElementById("amicizie-percent");
+    const umorePercentText = document.getElementById("umore-percent");
+
+    // Impostiamo la larghezza delle barre di progresso in base alla percentuale
+    amoreFill.style.width = `${amorePercent}%`;
+    soldiFill.style.width = `${soldiPercent}%`;
+    amicizieFill.style.width = `${amiciziePercent}%`;
+    umoreFill.style.width = `${umorePercent}%`;
+
+    // Aggiorniamo il testo della percentuale
+    amorePercentText.textContent = `${amorePercent}%`;
+    soldiPercentText.textContent = `${soldiPercent}%`;
+    amiciziePercentText.textContent = `${amiciziePercent}%`;
+    umorePercentText.textContent = `${umorePercent}%`;
+}
   </script>
 
 </body>
