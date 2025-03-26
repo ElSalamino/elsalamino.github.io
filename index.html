@@ -5,75 +5,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oroscopo dei Segni Zodiacali</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #170c9c;
-      color: #333;
-    }
-    h1 {
-      color: #746be8;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    }
-    .segno-button {
-      font-size: 1.2em;
-      margin: 10px;
-      padding: 10px 20px;
-      cursor: pointer;
-      border: 2px solid #3427db;
-      background-color: #f2f2f2;
-      color: #ff7f50;
-      border-radius: 5px;
-    }
-    .segno-button:hover {
-      background-color: #3427db;
-      color: white;
-    }
-    #oroscopo {
-      font-size: 1.5em;
-      margin-top: 30px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-      background-color: #f2f2f2;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      display: none;
-    }
-    #buttons-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    #back-button {
-      margin-top: 20px;
-      font-size: 1.2em;
-      padding: 10px 20px;
-      border: 2px solid #ffdd57;
-      background-color: #f2f2f2;
-      color: #1e1e8f;
-      border-radius: 5px;
-      cursor: pointer;
-      display: none;
-      transition: 0.3s;
-    }
-    #back-button:hover {
-      background-color: #ffdd57;
-      color: #1e1e8f;
-    }
-   /* CSS per lo stile delle barre di caricamento */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background-color: #170c9c; /* Colore di sfondo */
+    color: #333;
+}
+
+h1 {
+    color: #746be8; /* Colore del titolo */
+}
+
+.segno-button {
+    font-size: 1.2em;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 2px solid #3427db;
+    background-color: #f2f2f2;
+    color: #ff7f50;
+    border-radius: 5px;
+}
+
+.segno-button:hover {
+    background-color: #3427db;
+    color: white;
+}
+
+#oroscopo {
+    font-size: 1.5em;
+    margin-top: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+#buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#back-button {
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: 2px solid #ffdd57;
+    background-color: #f2f2f2;
+    color: #1e1e8f;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    transition: 0.3s;
+}
+
+#back-button:hover {
+    background-color: #ffdd57;
+    color: #1e1e8f;
+}
+
+/* CSS per lo stile delle barre di caricamento */
 .slider-container {
     display: block;
     margin-top: 20px;
     padding: 10px;
     text-align: center;
+    width: 90%; /* La larghezza si adatta alla finestra */
+    max-width: 600px; /* Limita la larghezza per schermi più grandi */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
-    width: 80%;  /* La larghezza della barra */
+    width: 100%;  /* La larghezza della barra è al 100% del contenitore */
     height: 25px;
     background-color: #ddd;  /* Colore di sfondo della barra */
     border-radius: 5px;
@@ -92,6 +113,42 @@ span {
     font-size: 1.2em;
     color: #333;
     padding-left: 10px;
+}
+
+/* Media query per dispositivi più piccoli (ad esempio smartphone) */
+@media (max-width: 480px) {
+    body {
+        padding: 20px; /* Riduci il padding per schermi piccoli */
+    }
+
+    .slider-container {
+        width: 95%; /* Maggiore larghezza per dispositivi più piccoli */
+    }
+
+    p {
+        font-size: 1em; /* Riduci la dimensione del testo su schermi piccoli */
+    }
+
+    span {
+        font-size: 1em; /* Riduci la dimensione della percentuale */
+    }
+}
+
+/* Colorazione dinamica delle barre in base alla percentuale */
+#amore-fill {
+    background-color: #ff4d4d; /* Rosso per l'amore */
+}
+
+#soldi-fill {
+    background-color: #4caf50; /* Verde per i soldi */
+}
+
+#amicizie-fill {
+    background-color: #2196f3; /* Blu per le amicizie */
+}
+
+#umore-fill {
+    background-color: #ff9800; /* Arancione per l'umore */
 }
 
   </style>
@@ -123,25 +180,25 @@ span {
     <div class="progress-bar" id="amore-bar">
         <div class="progress-fill" id="amore-fill"></div>
     </div>
-    <span id="amore-percent">75%</span> <!-- Mostra la percentuale -->
+    <span id="amore-percent">75%</span>
 
     <p>Soldi 💸​</p>
     <div class="progress-bar" id="soldi-bar">
         <div class="progress-fill" id="soldi-fill"></div>
     </div>
-    <span id="soldi-percent">60%</span> <!-- Mostra la percentuale -->
+    <span id="soldi-percent">60%</span>
 
     <p>Amicizie 🫂​</p>
     <div class="progress-bar" id="amicizie-bar">
         <div class="progress-fill" id="amicizie-fill"></div>
     </div>
-    <span id="amicizie-percent">80%</span> <!-- Mostra la percentuale -->
+    <span id="amicizie-percent">80%</span>
 
     <p>Umore 😃​</p>
     <div class="progress-bar" id="umore-bar">
         <div class="progress-fill" id="umore-fill"></div>
     </div>
-    <span id="umore-percent">70%</span> <!-- Mostra la percentuale -->
+    <span id="umore-percent">70%</span>
 </div>
 
 
