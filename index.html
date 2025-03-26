@@ -65,18 +65,19 @@
       color: #1e1e8f;
     }
     #slider-container {
-  display: block !important; /* Aggiungi !important se il display è stato sovrascritto da un altro CSS */
-  margin-top: 10px;
+  display: block !important; /* Aggiungi !important per forzare la visibilità */
+  margin-top: 20px; /* Aggiungi un po' di spazio sopra */
+  padding: 10px;
     }
-    
     .w3-light-grey {
-      background-color: #f0f0f0; /* Aggiungi colore di sfondo per evidenziare */
-    }
-    
-    .w3-pink, .w3-light-green, .w3-amber, .w3-cyan {
-      height: 24px;
-      transition: width 0.5s ease;
-    }
+  background-color: #f0f0f0; /* Aggiungi colore di sfondo per evidenziare */
+  transition: background-color 0.5s ease;
+}
+
+.w3-pink, .w3-light-green, .w3-amber, .w3-cyan {
+  height: 24px;
+  transition: width 0.5s ease;
+}
   </style>
 </head>
 <body>
@@ -160,18 +161,26 @@
 
     // Funzione per navigare al segno successivo
     function vaiAlSegno(segno) {
-      // Nascondiamo i pulsanti
-      document.getElementById('buttons-container').style.display = 'none';
-      
-      // Mostriamo l'oroscopo
-      document.getElementById('oroscopo').style.display = 'block';
-      //mostriamo il back
-      document.getElementById('back-button').style.display = 'block';
-      // Mostriamo gli slider
-      document.getElementById('slider-container').style.display = 'block';
-      // Genera l'oroscopo deterministico per il segno
-      generaOroscopo(segno);
-    }
+  // Nascondiamo i pulsanti
+  document.getElementById('buttons-container').style.display = 'none';
+  
+  // Mostriamo l'oroscopo
+  document.getElementById('oroscopo').style.display = 'block';
+  
+  // Mostriamo il bottone indietro
+  document.getElementById('back-button').style.display = 'block';
+  
+  // Mostriamo gli slider
+  const sliderContainer = document.getElementById('slider-container');
+  sliderContainer.style.display = 'block';
+  
+  // Verifica con un log
+  console.log('Slider container visibile:', sliderContainer.style.display);
+
+  // Genera l'oroscopo deterministico per il segno
+  generaOroscopo(segno);
+}
+
     function tornaIndietro() {
       document.getElementById('buttons-container').style.display = 'flex';
       //togli tutto rrapido
