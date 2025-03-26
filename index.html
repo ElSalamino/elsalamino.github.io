@@ -251,6 +251,11 @@ span {
   // Mostriamo il pulsante per tornare indietro
   document.getElementById('back-button').style.display = 'block';
 
+  //aggiorniamo il titolo
+  document.getElementById("titolo").textContent = `${segno} 💫`;
+  document.getElementById("scegli").textContent = `${segno} 💫`;
+  
+  
   // Aggiungi qui la logica per generare l'oroscopo
   generaOroscopo(segno);
 }
@@ -262,7 +267,9 @@ span {
   
   // Mostriamo il contenitore di pulsanti
   document.getElementById('buttons-container').style.display = 'flex';
-
+  //aggiorniamo il titolo
+  document.getElementById("titolo").textContent = `Oroscopo 💫`;
+  document.getElementById("scegli").textContent = `Scegli il tuo Segno Zodiacale`;
   // Nascondiamo il pulsante per tornare indietro
   document.getElementById('back-button').style.display = 'none';
 }
