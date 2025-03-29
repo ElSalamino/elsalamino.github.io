@@ -16,6 +16,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     padding: 50px;
+    background-image:`https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg`,
     background-color: #170c9c; /* Colore di sfondo */
     color: #333;
 }
@@ -524,7 +525,7 @@ span {
     `<span style="color: chocolate;">Cioccolato</span>`
 ];
     const colore = colori[Math.floor(randomSeed(seed + 2) * colori.length)]
-    document.getElementById('colore').innerHTML = `Colore del giorno: ${colore}`;
+    document.getElementById('colore').innerHTML = `${colore}`;
     
     const barometri = ["Soleggiato ☀️",
 "Parzialmente nuvoloso 🌤️",
@@ -545,7 +546,7 @@ span {
 "Caldo torrido 🔥",
 "Freddo intenso 🥶"]
     const barometro = barometri[Math.floor(randomSeed(seed + 2) * barometri.length)]
-    document.getElementById('barometro').innerHTML = `Barometro dell'umore: ${barometro}`;
+    document.getElementById('barometro').innerHTML = `${barometro}`;
     
 }
   </script>
