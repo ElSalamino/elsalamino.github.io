@@ -524,7 +524,7 @@ span {
     `<span style="color: chocolate;">Cioccolato</span>`
 ];
     const colore = colori[Math.floor(randomSeed(seed + 2) * colori.length)]
-    document.getElementById('colore').innerHTML = `Il tuo colore del giorno: ${colore}`;
+    document.getElementById('colore').innerHTML = `Colore del giorno: ${colore}`;
     
     const barometri = ["Soleggiato ☀️",
 "Parzialmente nuvoloso 🌤️",
@@ -545,7 +545,7 @@ span {
 "Caldo torrido 🔥",
 "Freddo intenso 🥶"]
     const barometro = barometri[Math.floor(randomSeed(seed + 2) * barometri.length)]
-    document.getElementById('barometro').innerHTML = 'Il tuo colore del giorno: ${barometro}';
+    document.getElementById('barometro').innerHTML = `Barometro dell'umore: ${barometro}`;
     
 }
   </script>
