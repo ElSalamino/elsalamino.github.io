@@ -77,6 +77,21 @@ h1 {
     background-color: #ffdd57;
     color: #1e1e8f;
 }
+/* Css per il colore del giorno e barometro*/
+.colore-container {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    width: 90%; /* La larghezza si adatta alla finestra */
+    max-width: 600px; /* Limita la larghezza per schermi più grandi */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
 /* CSS per lo stile delle barre di caricamento */
 .slider-container {
@@ -176,6 +191,7 @@ span {
 
 <div id="oroscopo"></div>
   <!-- HTML per le barre di caricamento -->
+
 <div class="slider-container" id="slider-container" style="display: none;">
     <p>Amore ❤️</p> <span id="amore-percent">75%</span>
     <div class="progress-bar" id="amore-bar">
@@ -202,7 +218,14 @@ span {
   
 </div>
 
-
+<div class="colore-container" id="slider-container" style="display: none;">
+    <p>Colore del giorno: </p> <span id="colore">75%</span></p>
+  </p>
+   <p>Barometro dell'umore: </p> <span id="barometro">75%</span></p>
+    
+    
+  
+</div>
 
 
   <button id="back-button" onclick="tornaIndietro()" style="display: none;">Indietro</button>
@@ -244,6 +267,7 @@ span {
   // Mostriamo il div "oroscopo" e gli slider
   document.getElementById('oroscopo').style.display = 'block';
   document.getElementById('slider-container').style.display = 'block';  // Mostra gli slider
+  document.getElementById('colore-container').style.display = 'block';  // Mostra gli slider
   
   // Nascondiamo il contenitore di pulsanti (se necessario)
   document.getElementById('buttons-container').style.display = 'none';
@@ -264,6 +288,7 @@ span {
   // Nascondiamo il div "oroscopo" e gli slider
   document.getElementById('oroscopo').style.display = 'none';
   document.getElementById('slider-container').style.display = 'none';  // Nascondi gli slider
+  document.getElementById('colore-container').style.display = 'none';  // Nascondi gli slider
   
   // Mostriamo il contenitore di pulsanti
   document.getElementById('buttons-container').style.display = 'flex';
@@ -475,6 +500,53 @@ span {
     soldiPercentText.textContent = `${soldiPercent/10} / 10`;
     amiciziePercentText.textContent = `${amiciziePercent/10} / 10`;
     umorePercentText.textContent = `${umorePercent/10} / 10`;
+    // Scegliamo un colore e mettiamolo nel testo
+    const colori = [
+    `<span style="color: red;">Rosso</span>`,
+    `<span style="color: blue;">Blu</span>`,
+    `<span style="color: green;">Verde</span>`,
+    `<span style="color: orange;">Arancione</span>`,
+    `<span style="color: purple;">Viola</span>`,
+    `<span style="color: pink;">Rosa</span>`,
+    `<span style="color: brown;">Marrone</span>`,
+    `<span style="color: gray;">Grigio</span>`,
+    `<span style="color: yellow;">Giallo</span>`,
+    `<span style="color: cyan;">Ciano</span>`,
+    `<span style="color: magenta;">Magenta</span>`,
+    `<span style="color: lime;">Lime</span>`,
+    `<span style="color: navy;">Blu Navy</span>`,
+    `<span style="color: gold;">Oro</span>`,
+    `<span style="color: silver;">Argento</span>`,
+    `<span style="color: coral;">Corallo</span>`,
+    `<span style="color: indigo;">Indaco</span>`,
+    `<span style="color: violet;">Violetto</span>`,
+    `<span style="color: teal;">Verde Acqua</span>`,
+    `<span style="color: chocolate;">Cioccolato</span>`
+];
+    const colore = colori[Math.floor(randomSeed(seed + 2) * colori.length)]
+    document.getElementById('colore').innerHTML = `Il tuo colore del giorno: ${colore}`;
+    
+    const barometro = ["Soleggiato ☀️",
+"Parzialmente nuvoloso 🌤️",
+"Nuvoloso ☁️",
+"Molto nuvoloso ⛅",
+"Coperto 🌥️",
+"Pioggia leggera 🌦️",
+"Pioggia moderata 🌧️",
+"Temporale ⛈️",
+"Temporale con pioggia 🌩️",
+"Neve leggera 🌨️",
+"Neve intensa ❄️",
+"Nevischio 🌬️",
+"Ghiaccio 🧊",
+"Nebbia 🌫️",
+"Vento forte 💨",
+"Arcobaleno 🌈",
+"Caldo torrido 🔥",
+"Freddo intenso 🥶"]
+    const barometro = barometro[Math.floor(randomSeed(seed + 2) * barometro.length)]
+    document.getElementById('barometro').innerHTML = 'Il tuo colore del giorno: ${barometro}';
+    
 }
   </script>
 
