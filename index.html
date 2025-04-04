@@ -244,7 +244,7 @@ span {
     const endDate = new Date("2026-12-31T23:59:59"); // Data obiettivo
 
     const totalTime = Math.floor((endDate - startDate) / 1000); // Secondi totali tra startDate e endDate
-    const maxViews = 6900000; // Numero massimo di visite ipotetico entro il 2026
+    const maxViews = 6969420; // Numero massimo di visite ipotetico entro il 2026
 
     function updateCounter() {
       const now = new Date();
@@ -314,7 +314,7 @@ span {
     function getNumberBasedOnSeed(seed) {
     // Genera un numero casuale da 0 a 45 a step di 5 basato sul seed
     const randomFactor = randomSeed(seed);  // Ottieni il valore casuale basato sul seed
-    const possibleValues = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45];
+    const possibleValues = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45,46];
     const index = Math.floor(randomFactor * possibleValues.length); // Mappa il valore casuale in un indice
     return 55 + possibleValues[index];
 }
@@ -403,6 +403,7 @@ span {
   "Venere illumina le tue relazioni oggi. Sii aperto a nuovi incontri e a momenti di connessione autentica.",
  "La congiunzione di Marte porterà ardore nella tua giornata, attenzione ai tuoi incontri",
  "La congiunzione Lunare ti illumina appieno, qualsiasi passo non è troppo grande per te",
+ "La congiunzione con Saturno ti dà energia, sfruttala al meglio per raggiungere i tuoi scopi",
  "L'opposizione di Venere si farà sentire, attenzione alle tue scelte amorose e cerca opzioni più ragionate",
  "La quadratura in Urano della costellazione svela in voi la fragilità che da molto doveva uscire, sii umano.",
  "Marte vi viene contro, la sfida deve aspettare. Le discussioni si faranno difficili anche se sarebbe meglio evitarle.",
@@ -427,6 +428,7 @@ span {
   "Marte ti spinge ad agire con determinazione. Oggi è il giorno giusto per prendere in mano una situazione che richiede coraggio.",
   `${segno}, Marte ti dona energia e motivazione. Non perdere questa spinta per superare qualsiasi ostacolo.`,
   "Saturno ti invita alla riflessione. Oggi è il giorno giusto per fare un bilancio e prendere decisioni responsabili.",
+  "Le stelle sono sicure di te, sii sicuro di te a tua volta.",
   `${segno}, con Saturno che ti osserva, la disciplina sarà la tua alleata oggi. Organizzati e vedrai i frutti dei tuoi sforzi.`
 ];
 
@@ -549,6 +551,13 @@ span {
 "Ghiaccio 🧊",
 "Nebbia 🌫️",
 "Vento forte 💨",
+"Onde perfette 🏄🏽​",
+"Pioggia di bolle ​​🫧​",
+"Pioggia di foglie 🍁",
+"Caldo afoso ⛱️",
+"Nevicate continue ☃️​",
+"Prime nevicate ⛄​",
+"Tsunami ​🌊",
 "Arcobaleno 🌈",
 "Caldo torrido 🔥",
 "Freddo intenso 🥶"]
